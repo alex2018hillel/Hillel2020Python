@@ -22,3 +22,4 @@ def decomposition(n):
 
 n=int(input("Integer: "))
 print(decomposition(n))
+
