@@ -20,6 +20,9 @@ def decomposition(n):
        str_decomposition.append(factor)
    return "*".join(map(str, str_decomposition))
 
-n=int(input("Integer: "))
-print(decomposition(n))
+n = 1
+while n!=0:
+    n = int(input("Integer: "))
+    print(decomposition(n))
+
 
