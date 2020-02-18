@@ -1,14 +1,16 @@
 import time
 import random
 
-def tracer(func):
-    calls = 0
-    def wrapper(*args):
-        nonlocal calls
-        calls += 1
-        print('call %s to %s' % (calls, func.__name__))
-        return func(*args)
-    return wrapper
+def once(func):
+    def inner(*args):
+        if not inner.called:
+            print('really doing init')
+            func(*args)
+            inner.called = True
+        else:
+            print('not first init')
+    inner.called = False
+    return inner
 
 def memoize(f):
     cache = {}
@@ -28,8 +30,8 @@ def timer(f):
         return res
     return tmp
 
-@tracer
 @timer
+@once
 @memoize
 def long_story(x, y):
     l = []

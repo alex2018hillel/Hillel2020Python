@@ -13,13 +13,12 @@ def timer(f):
 def func(x, y, z):
     for i in range(1,x):
         s = sum(l_list()[random.randint(1,y):random.randint(y,z)])
-        print(s)
+        return s
 
 l = []
 def l_list():
     for i in range(1000):
         l.append(random.randint(1,99))
-    print(l)
     return l
 
-func(1000, 50, 100)
+print(func(1000, 50, 100))
