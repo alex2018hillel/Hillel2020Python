@@ -99,3 +99,8 @@ speak("Мой разработчик не научил меня анекдота
 
 #stop_listening = r.listen_in_background(m, callback)
 #while True: time.sleep(0.1) # infinity loop
+
+'''
+git checkout master
+git merge Alex
+'''
