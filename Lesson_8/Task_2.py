@@ -1,5 +1,4 @@
 import os
-from tld import get_tld
 
 TXT_FOLDER = []
 for top, dirs, files in os.walk("lesson6"):
@@ -9,6 +8,7 @@ for top, dirs, files in os.walk("lesson6"):
 SORTING_TXT_FOLDER = sorted(TXT_FOLDER)
 count = 0
 all_list = []
+os.mkdir("folder")
 
 for i in range(0,len(SORTING_TXT_FOLDER)):
     path = SORTING_TXT_FOLDER[count]
@@ -17,7 +17,7 @@ for i in range(0,len(SORTING_TXT_FOLDER)):
         for line in file:
             line = line.rstrip('\n')
             l = line.split('\t')
-            a, *b = l[3], l[4], l[7]
+            a, *b = l[3], l[4], l[6]
             all_list.append([a, b])
 
 def data_preparation(city):
@@ -26,17 +26,14 @@ def data_preparation(city):
         if i[0] == city:
             value = i[1]
             try:
-                url = value[1].split('/')[2]
-                try:
-                    name = get_tld(url)
-                except:
-                    name = url
-                body.append([name,value[0]])
+                url = value[1].split('.')[0]
+                body.append([url,value[0]])
             except:
                 pass
     return body
 
-def record_to_file(body):
+def record_to_file(body, file_name):
+    myfile = open(file_name, 'w')
 
     list_requests = []
     for l in body:
@@ -60,8 +57,19 @@ for i in all_list:
     all_city.append(i[0])
 
 for city in set(all_city):
-    file_name = city + ".tsv"
+    file_name = "folder/" + city.replace(" ", "_") + ".tsv"
     print(file_name)
-    myfile = open(file_name, 'w')
 
-    record_to_file(data_preparation(city))
+    record_to_file(data_preparation(city), file_name)
+
+
+
+
+
+
+
+
+
+
+
+
