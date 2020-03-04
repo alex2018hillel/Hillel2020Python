@@ -3,12 +3,12 @@ import os
 import requests
 from pathlib import Path
 # path = Path('test.json')
-# data = json.loads(path.read_text(encoding='utf-8'))
-# print(data)
-# data['level2'].update({'timestamp':0.015,'movement':'type_2'})
-# path.write_text(json.dumps(data), encoding='utf-8')
-# data = json.loads(path.read_text(encoding='utf-8'))
-# print(data)
+# # data = json.loads(path.read_text(encoding='utf-8'))
+# # print(data)
+# # data['level2'].update({'timestamp':0.015,'movement':'type_2'})
+# # path.write_text(json.dumps(data), encoding='utf-8')
+# # data = json.loads(path.read_text(encoding='utf-8'))
+# # print(data)
 def request(i):
     r = requests.get('http://swapi.co/api/people/'+ str(i))
     print(r.content)
@@ -37,10 +37,8 @@ abspath = str(os.path.abspath (r'1/test.json'))
 print(abspath)
 split_abspath = list(abspath.split('/'))
 print(list(split_abspath))
-print(split_abspath - split_dir_path)
+# print(split_abspath - split_dir_path)
 #for item in split_abspath:
-
-
 #     list_id = []
 # for l in body:
 #     if l[0] == site_name:
@@ -49,8 +47,6 @@ print(split_abspath - split_dir_path)
 
 
 # list_id = set([l[1] for l in body if l[0] == site_name]
-
-
 
 
 # for section, commands in templates.items():
