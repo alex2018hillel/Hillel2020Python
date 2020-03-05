@@ -2,13 +2,7 @@ import json
 import os
 import requests
 from pathlib import Path
-# path = Path('test.json')
-# # data = json.loads(path.read_text(encoding='utf-8'))
-# # print(data)
-# # data['level2'].update({'timestamp':0.015,'movement':'type_2'})
-# # path.write_text(json.dumps(data), encoding='utf-8')
-# # data = json.loads(path.read_text(encoding='utf-8'))
-# # print(data)
+
 def request(i):
     r = requests.get('http://swapi.co/api/people/'+ str(i))
     print(r.content)
@@ -30,29 +24,19 @@ path = Path("1/test.json")
 path.write_text(json.dumps(templates), encoding='utf-8')
 #--------------------------------------------------------------------#
 
-dir_path = os.getcwd()
-print(dir_path)
-split_dir_path = list(dir_path.split('\, /'))
 abspath = str(os.path.abspath (r'1/test.json'))
 print(abspath)
-split_abspath = list(abspath.split('/'))
-print(list(split_abspath))
-# print(split_abspath - split_dir_path)
-#for item in split_abspath:
-#     list_id = []
-# for l in body:
-#     if l[0] == site_name:
-#         list_id.append(l[1])
-# number = len(set(list_id))
+#-------------------------------------------------------------------#
 
+dir_path = str(os.getcwd())
+split_abspath = abspath.split(dir_path)
+print(split_abspath[1])
 
-# list_id = set([l[1] for l in body if l[0] == site_name]
-
-
-# for section, commands in templates.items():
-#     print(section)
-#     print('\n'.join(commands))
-
+# print(dir_path)
+# rep = dir_path.replace('\\', '/')
+# print(rep)
+# l = list(dir_path.split()
+# split_dir_path = list(dir_path.split('\, /'))
 
 # def find_str(d):
 #     result = []
@@ -61,8 +45,14 @@ print(list(split_abspath))
 #     # print('\n'.join(commands))
 #     return result
 
-
-
     # print(find_str(json.loads(request(i))))
 
 # data.update({'timestamp':0.015,'movement':'type_2'})
+
+# path = Path('test.json')
+# # data = json.loads(path.read_text(encoding='utf-8'))
+# # print(data)
+# # data['level2'].update({'timestamp':0.015,'movement':'type_2'})
+# # path.write_text(json.dumps(data), encoding='utf-8')
+# # data = json.loads(path.read_text(encoding='utf-8'))
+# # print(data)
