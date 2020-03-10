@@ -2,10 +2,8 @@ import json
 import os
 import requests
 from pathlib import Path
-from os.path import relpath
 
 def request(i, base_url):
-    #r = requests.get('http://swapi.co/api/people/'+ str(i))
     r = requests.get(base_url+ str(i))
     print(r.content)
     return (r.content)
@@ -30,7 +28,6 @@ class JsonRuner:
                 file_content = f.read()
                 templates.update(json.loads(file_content))
                 print(templates)
-        #path = Path("1/test.json")
         path = Path(self.OUTPUT)
         path.write_text(json.dumps(templates), encoding='utf-8')
     #--------------------------------------------------------------------#
@@ -40,20 +37,10 @@ class JsonRuner:
         print(abspath)
     #-------------------------------------------------------------------#
 
-    #relative_path = os.path.realpath(r'1/test.json')
     def find_relative_path(self):
-        relative_path = os.path.dirname(os.path.realpath(self.OUTPUT))
-        #relative_path = os.path.realpath(self.OUTPUT)
+        relative_path = os.path.relpath(os.path.abspath (self.OUTPUT))
         print(relative_path)
     #-------------------------------------------------------------------#
-
-
-    # print(os.path.realpath(r'1/test.json'))
-    # print(os.path.realpath(r'\Lesson\test.json'))
-
-    # dir_path = str(os.getcwd())
-    # split_abspath = abspath.split(dir_path)
-    # print(split_abspath[1])
 
 if __name__ == '__main__':
     JR = JsonRuner()

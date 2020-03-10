@@ -41,13 +41,11 @@ def record_to_file(body, file_name):
 
     list_id = []
     for site_name in set(list_requests):
-        for l in body:
-            if l[0] == site_name:
-                list_id.append(l[1])
-        number = len(set(list_id))
-        # list_id = set([l[1] for l in body if l[0] == site_name])
-        # number = 0
-        # number = number + len(list_id)
+        # for l in body:
+        #     if l[0] == site_name:
+        #         list_id.append(l[1])
+        # number = len(set(list_id))
+        list_id = set([l[1] for l in body if l[0] == site_name])
         number =len(list_id)
         line = '{}{}{}'.format(site_name, '\t', str(number))
         print(line)
