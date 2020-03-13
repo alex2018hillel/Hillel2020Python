@@ -65,6 +65,10 @@ class Switch:
             self._password = value
 
 switch = Switch('name','12345678','192.168.11.24','2020hillel','password')
+switch.mac_address = "111111111"
+switch.ip_address = "192.168.00.25"
+switch.login = "2222222222"
+
 print(switch.unit_name)
 print(switch.mac_address)
 print(switch.ip_address)
