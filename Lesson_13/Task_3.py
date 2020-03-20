@@ -1,6 +1,9 @@
 import time
 from contextlib import ContextDecorator
 
+a = 5
+b = 0
+
 class my_context_decorator(ContextDecorator):
 
     def __init__(self, *suppressed):
@@ -13,7 +16,6 @@ class my_context_decorator(ContextDecorator):
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        time.sleep(1)
         t = time.time()
         print('Execution time: {}'.format(t - self.t))
         print('exit','\n')
@@ -22,35 +24,46 @@ class my_context_decorator(ContextDecorator):
 my_list = [1, 2, 3, 4, 5]
 
 @my_context_decorator()
-def func():
+def func(a, b):
     print('1')
-    try:
-        my_list[6]
-    except IndexError:
-        print("That index is not in the list!")
+    c = 0
+    for i in range(100_000_000):
+        try:
+            c = a / b
+        except ZeroDivisionError:
+            c = 0
 
-func()
+func(5, 0)
 
 with my_context_decorator():
-    try:
-        my_list[6]
-    except IndexError:
-        pass
+    c = 0
+    for i in range(100_000_000):
+        try:
+            c = a / b
+        except ZeroDivisionError:
+            c = 0
+
 
 @my_context_decorator(Exception)
-def func2():
+def func2(a, b):
     print('2')
-    if my_list[6] is None:
-        return
-    else:
-        return my_list[6]
+    c = 0
+    for i in range(100_000_000):
+        if b == 0:
+            c = 0
+        else:
+            c = a / b
+    return c
 
-func2()
+func2(5, 0)
 
 with my_context_decorator(Exception):
-    if my_list[6] is None:
-        pass
-
+    #c = 0
+    for i in range(100_000_000):
+        if b == 0:
+            c = 0
+        else:
+            c = a / b
 
 
 
