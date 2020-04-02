@@ -2,7 +2,7 @@ def readfiles(filename):
     for line in open(filename):
         yield line.strip()
 
-def grep(filename):#pattern,
+def grep(filename):
     for pattern in readfiles(filename):
         count = 0
         for line in readfiles(filename):

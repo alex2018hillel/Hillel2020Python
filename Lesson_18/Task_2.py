@@ -30,6 +30,7 @@ def second_arg():
     for i_s in s:
         yield (i_s)
 
+
 if __name__ == '__main__':
     t = tuple(range(1,9))
     s = 'ABCD'
